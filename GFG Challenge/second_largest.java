@@ -1,7 +1,7 @@
 public class second_largest{
     public static void main(String[] args) {
         if(arr.length < 2){
-            return -1;
+            System.out.println("-1");
         }
         int max = -1;
         int second_max = -1;
@@ -14,6 +14,6 @@ public class second_largest{
                 second_max = num;
             }
         }
-        return second_max;
+        System.out.println(second_max);
     }
 }
