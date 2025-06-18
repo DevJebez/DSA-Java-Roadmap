@@ -22,6 +22,7 @@ public class LastDigitofString {
         }
 
         // Step 4: Compute b mod cycle length using digit-by-digit simulation
+        // The step simulates long division
         int bMod = 0;
         int cycleLength = cycle.size();
         for (int i = 0; i < b.length(); i++) {

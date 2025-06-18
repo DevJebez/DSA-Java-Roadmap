@@ -7,6 +7,8 @@ public class gcd{
         System.out.println("Enter a number:");int m = sc.nextInt();
         int res = gcd_euclid(n,m);
         System.out.println(res);
+        int age;
+        System.out.println(age);
     }
     public static int gcd_euclid(int a, int b){
         if (b == 0) return a;
