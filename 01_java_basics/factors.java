@@ -8,7 +8,7 @@ public class factors{
     public static void factorList(int n){
         List<Integer> smallDivisors = new ArrayList<>();
         List<Integer> largeDivisors  = new ArrayList<>();
-        for(int i = 1; i<=Math.sqrt(n); i++){
+        for(int i = 1; i<=  ; i++){
             if (n%i == 0){
                 smallDivisors.add(i);
                 if (n/i != i)
