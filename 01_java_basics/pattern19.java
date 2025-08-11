@@ -3,8 +3,6 @@ public class pattern19{
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a number:"); int n = sc.nextInt();
-        int total_col = 2*n;
-        int total_spaces = 2*n;
         //first part
         for(int i = n; i>0 ; i --){
             //left part - decreasing star
@@ -12,7 +10,7 @@ public class pattern19{
                 System.out.print("*");
             }
             //mid part - spaces
-            for(int j = (n*2)-i*2;j >0 ; j--){
+            for(int j = (n*2)-i*2;j > 0 ; j--){
                 System.out.print(" ");
             }
             //right part - decreasing star pattern

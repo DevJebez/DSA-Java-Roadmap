@@ -1,3 +1,31 @@
+/*
+Examples:
+
+Input Format: N = 3
+Result: 
+*    *
+**  **
+******
+**  **
+*    *
+
+
+Input Format: N = 6
+Result:   
+*          *
+**        **
+***      ***
+****    ****
+*****  *****    
+************
+*****  *****
+****    ****
+***      ***
+**        **
+*          *
+
+*/
+
 import java.util.Scanner;
 public class pattern20{
     public static void main(String args[]){
