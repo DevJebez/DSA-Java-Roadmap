@@ -8,7 +8,7 @@ public class recursion{
         c = c + 1;
         n_numbers();
     } 
-    static void n_times_name(int n , int i){
+    static voi  d n_times_name(int n , int i){
         if(i>n) return;
         System.out.println("Jebez");
         n_times_name(n,i+1 );
