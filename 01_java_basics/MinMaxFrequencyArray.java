@@ -5,6 +5,8 @@ public class MinMaxFrequencyArray{
         int n = arr.length;
         MinMaxCountFreq(arr,n);
     }
+    //Time Complexity: O(N*N), where N = size of the array. We are using the nested loop to find the frequency.
+    //Space Complexity:  O(N), where N = size of the array. It is for the visited array we are using.
     static void MinMaxCountFreq(int arr[] , int n){
         boolean visited[] = new boolean[n];
         int maxcount = Integer.MIN_VALUE;
@@ -33,6 +35,7 @@ public class MinMaxFrequencyArray{
         }
         System.out.println("Highest frequency element:"+maxelement);
         System.out.println("Lowest frequency element:"+minelement);
-
     }
+    //optimal approach using hashmap in java
+    
 }
