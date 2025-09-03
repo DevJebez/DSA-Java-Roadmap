@@ -1,11 +1,11 @@
 import java.util.*;
-public class MaxFrequencyArray{
+public class MinMaxFrequencyArray{
     public static void main(String[] args){
         int[] arr = {10,20,10,50,60,3};
         int n = arr.length;
-        MaxCountFreq(arr,n);
+        MinMaxCountFreq(arr,n);
     }
-    static void MaxCountFreq(int arr[] , int n){
+    static void MinMaxCountFreq(int arr[] , int n){
         boolean visited[] = new boolean[n];
         int maxcount = Integer.MIN_VALUE;
         int maxelement = 0;
@@ -32,7 +32,7 @@ public class MaxFrequencyArray{
             }
         }
         System.out.println("Highest frequency element:"+maxelement);
-        System.out.println("Lowest frequencu element:"+minelement);
+        System.out.println("Lowest frequency element:"+minelement);
 
     }
 }
