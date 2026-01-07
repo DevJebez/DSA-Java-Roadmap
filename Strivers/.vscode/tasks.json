@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Create Java DSA File",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/new.sh",
+      "args": ["${input:problemName}"],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "clear": true
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "problemName",
+      "type": "promptString",
+      "description": "Enter problem name (ClassName)"
+    }
+  ]
+}
