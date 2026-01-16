@@ -58,7 +58,6 @@ public class findmissingnumber{
         }
         xor1 = xor1 ^ n;
         return (xor1 ^ xor2);
-
     }
     public static void main(String args[]){
         int n = 6;
