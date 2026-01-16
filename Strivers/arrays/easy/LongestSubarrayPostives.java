@@ -4,7 +4,6 @@ public class LongestSubarrayPostives{
         int k = 5;//sum
         System.out.println("Result:"+bruteforce(arr,k));
         System.out.println("Result optimal:" + optimal(arr,k));
-
     }
     private static int optimal(int[] arr, int k){
         int maxlen = 0;
