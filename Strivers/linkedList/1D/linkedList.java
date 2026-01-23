@@ -84,6 +84,42 @@ public class linkedList{
         }
         return head;
     }
+    private static Node insertHead(Node head, int val){
+
+        return new Node(val, head); // create a new node and link it to head
+    }
+    private static Node insertTail(Node head, int val){
+        if(head == null){
+            return new Node(val);
+        }
+        Node temp = head;
+        while(temp.next != null){
+            temp = temp.next;
+        }
+        temp.next = new Node(val);
+        return head;
+    }
+    private static Node insertK(Node head, int val, int pos){
+        if(head == null){
+            if(pos == 1) return new Node(val);
+            else return head;
+        }
+        if(pos == 1){
+            return new Node(val, head);
+        }
+        int count = 0;
+        Node temp = head;
+        while(temp != null){
+            count++;
+            if(count == pos - 1){
+                Node x = new Node(val);
+                x.next = temp.next;
+                temp.next = x;
+                break;
+            }
+        }
+        return head;
+    }
     public static void main(String args[]){
         int[] arr = {2,5,6,8,9,10,11,12,13};
         Node head = ArrayToLL(arr);
@@ -92,16 +128,22 @@ public class linkedList{
         head = removeHead(head);
         System.out.println("Head is removed :");print(head);
         removeTail(head);
-        break;
         System.out.println("\nTail is removed :");print(head);
         int k = 4;
         head = removeK(head, k);
         System.out.println("\nAfter removing "+k+"th element:");print(head);
+        head = insertHead(head, 45);// we are storing the new node at head
+        System.out.println("\nAfter inserting at head:");print(head);
+        insertTail(head, 123);
+        System.out.println("\nAfter inserting at tail:");print(head);
+        k = 55;
+        insertK(head, 999, k);
+        System.out.println("\nAfter inserting at "+k+"th positiong:");print(head);
         /* Manual way of converting array to LL
         Node n4 = new Node(arr[3]);
         Node n3 = new Node(arr[2], n4);
         Node n2 = new Node(arr[1], n3);
-        Node n1 = new Node(arr[0],n2);
+        Node head = new Node(arr[0],n2);
         System.out.println(n2.data+" "+ n2.next.data);
         */
     }
