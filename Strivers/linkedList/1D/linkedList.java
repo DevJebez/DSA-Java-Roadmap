@@ -99,7 +99,7 @@ public class linkedList{
         temp.next = new Node(val);
         return head;
     }
-    private static Node insertK(Node head, int val, int pos){
+    private static Node insertPosition(Node head, int val, int pos){
         if(head == null){
             if(pos == 1) return new Node(val);
             else return head;
@@ -120,6 +120,26 @@ public class linkedList{
         }
         return head;
     }
+    private static Node insertValue(Node head, int ele, int val){
+        //insert a element before the value
+        if(head  == null){
+            return null;
+        }
+        if(head.data == val){
+            return new Node(val, head);
+        }
+        Node temp = head;
+        while(temp != null){
+            if(temp.next.data == val){
+                Node x = new Node(ele, temp.next);
+                temp.next = x;
+                found = true;
+                break;
+            }
+        }
+        
+        return head;
+    }
     public static void main(String args[]){
         int[] arr = {2,5,6,8,9,10,11,12,13};
         Node head = ArrayToLL(arr);
@@ -134,11 +154,14 @@ public class linkedList{
         System.out.println("\nAfter removing "+k+"th element:");print(head);
         head = insertHead(head, 45);// we are storing the new node at head
         System.out.println("\nAfter inserting at head:");print(head);
-        insertTail(head, 123);
+        head =insertTail(head, 123);
         System.out.println("\nAfter inserting at tail:");print(head);
         k = 55;
-        insertK(head, 999, k);
+        head =insertPosition(head, 999, k);
         System.out.println("\nAfter inserting at "+k+"th positiong:");print(head);
+        int val = 99999;
+        head = insertValue(head, 8888, 999);
+        System.out.println("\nInserting before "+val+":");print(head);
         /* Manual way of converting array to LL
         Node n4 = new Node(arr[3]);
         Node n3 = new Node(arr[2], n4);
