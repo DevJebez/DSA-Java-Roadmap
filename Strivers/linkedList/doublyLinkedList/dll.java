@@ -59,40 +59,47 @@ class dll{
         
     }
     private static Node deleteK(Node head, int k){
-        int count= 0;
-        Node temp  = head;
-        while(temp != null){
+        if (head == null || k <= 0) return head;
+
+        int count = 0;
+        Node temp = head;
+
+        while (temp != null) {
             count++;
-            if(count == k){
-                break;
-            }
+            if (count == k) break;
             temp = temp.next;
         }
+
+        if (temp == null) return head; // k > length
+
         Node back = temp.prev;
         Node front = temp.next;
-        //single node in DLL
-        if(front == null && back == null){
+
+        // only node
+        if (back == null && front == null) {
             return null;
         }
-        //at the end of DLL
-        else if(front == null){
-            temp.prev = null;
+        // deleting head
+        else if (back == null) {
+            head = front;
+            head.prev = null;
+        }
+        // deleting tail
+        else if (front == null) {
             back.next = null;
-            // or return removeTail(head);
         }
-        else if(back == null){
-            head = head.next;
-            // or return removeHead(head);
-            
-        }
-        else{
-            back.next= front;
+        // deleting middle
+        else {
+            back.next = front;
             front.prev = back;
-            temp.next= null;
-            temp.prev = null;
         }
+
+        temp.next = null;
+        temp.prev = null;
+
         return head;
     }
+
     private static void deleteNode(Node x){
         Node back = x.prev;
         Node front = x.next;
@@ -106,6 +113,7 @@ class dll{
         return;
     }
     private static Node insertHead(Node head, int val){
+        if (head == null) return new Node(val);
         Node newNode = new Node(val, head, null);
         head.prev = newNode;
         head = head.prev;
@@ -124,9 +132,7 @@ class dll{
     }
     private static Node insertBeforeKthElement(Node head, int val, int k){
         if(k == 1){
-            Node x = new Node(val, head, null);
-            head.prev = x;
-            head = head.prev;
+            if (k == 1) return insertHead(head, val);
         }
         int count = 0;
         Node temp = head;
@@ -142,11 +148,32 @@ class dll{
         return head;
     }
     private static void insertBeforeNode(Node node, int val){
+        if (node == null) return;
+
         Node back = node.prev;
-        Node current = new Node(val, node, back);
-        back.next = node;
-        node.prev = node;
-        return;
+        Node newNode = new Node(val, node, back);
+
+        if (back != null) {
+            back.next = newNode;
+        }
+        node.prev = newNode;
+    }
+
+    private static Node reverseDLL(Node head){
+        if(head == null || head.next == null) return head;
+
+        Node current = head;
+        Node temp = null;
+
+        while(current != null){ 
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
+
+        return temp.next; // new head
+
 
     }
     public static void main(String args[]){
@@ -160,6 +187,7 @@ class dll{
         head = convertToDLL(arr);
         head = deleteK(head,1);
         print(head);
-        
+        head = reverseDLL(head);
+        print(head);
     }
 }
