@@ -133,12 +133,24 @@ public class linkedList{
             if(temp.next.data == val){
                 Node x = new Node(ele, temp.next);
                 temp.next = x;
-                found = true;
+                //found = true;
                 break;
             }
         }
         
         return head;
+    }
+    private static Node reverseLL(Node head){
+        if(head == null || head.next == null) return head;
+        Node prev = null;
+        Node current = head;
+        while(current != null){
+            Node front = current.next;
+            current.next = prev;
+            prev = current;
+            current = front;
+        }
+        return prev;
     }
     public static void main(String args[]){
         int[] arr = {2,5,6,8,9,10,11,12,13};
@@ -162,6 +174,8 @@ public class linkedList{
         int val = 99999;
         head = insertValue(head, 8888, 999);
         System.out.println("\nInserting before "+val+":");print(head);
+        Node newhead = reverseLL(head);
+        System.out.println("\nReversed LL:");print(newhead);
         /* Manual way of converting array to LL
         Node n4 = new Node(arr[3]);
         Node n3 = new Node(arr[2], n4);
