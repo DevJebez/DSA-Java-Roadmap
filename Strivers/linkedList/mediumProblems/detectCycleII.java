@@ -27,7 +27,7 @@ class Node {
 // Solution class with detectLoop function
 class Solution {
     // function to detect loop in linked list
-    public boolean detectLoopBrute(Node head) {
+    public int detectLoopBrute(Node head) {
         // Initialize a pointer 'temp'
         // at the head of the linked list
         Node temp = head;
@@ -41,10 +41,11 @@ class Solution {
             // If the node is already in the
             // map, there is a loop
             if (nodeMap.containsKey(temp)) {
-                return true;
+                return nodeMap.get(temp);
             }
             // Store the current node
             // in the map
+            pos++;
             nodeMap.put(temp, pos);
             // Move to the next node
             temp = temp.next;
@@ -52,21 +53,26 @@ class Solution {
 
         // Step 3: If the list is successfully traversed 
         // without a loop, return false
-        return false;
+        return -1;
     }
     public boolean tortoiseAndHare(Node head){
-        if(head == null) return false;
+        if(head == null || head.next == null) return false;
 
         Node slow = head;
         Node fast = head;
-        while(fast != null && fast.next == null){
+        while(fast != null && fast.next != null){
             slow = slow.next;
             fast = fast.next.next;
             if(slow == fast){
-                return true;
+                slow = head;
+                while(slow != fast){
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow;    
             }
         }
-        return false
+        return false;
     }
 }
 // Driver class
@@ -91,9 +97,9 @@ public class detectCycleII{
 
         // Check if there is a loop 
         // in the linked list
-        boolean result = sol.detectLoopBrute(head);
-        if (result) {
-            System.out.println("Cycle is detected");
+        int result = sol.detectLoopBrute(head);
+        if (result != -1) {
+            System.out.println("Cycle is detected at position :"+result);
         } else {
             System.out.println("No loop detected in the linked list.");
         }
